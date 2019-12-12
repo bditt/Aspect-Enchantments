@@ -1,0 +1,8 @@
+name: AspectEnchantments
+main: net.AspectNetwork.bditt.Main
+version: 0.0.1
+api-version: 1.14
+commands:
+   aenchant:
+      description: Your description
+      usage: /aenchant
