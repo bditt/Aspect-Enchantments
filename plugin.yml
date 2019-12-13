@@ -4,5 +4,5 @@ version: 0.0.1
 api-version: 1.14
 commands:
    aenchant:
-      description: Your description
-      usage: /aenchant
+      description: Enchant a custom enchantment.
+      usage: /aenchant <enchantment>

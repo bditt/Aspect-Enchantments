@@ -34,21 +34,13 @@ public class HitHandler implements Listener{
             ItemStack DamagerWeapon = DamagerItems.getItemInMainHand();
             ItemMeta DamagerWeaponMeta = DamagerWeapon.getItemMeta();
             List<String> DamagerWeaponLores = DamagerWeaponMeta.hasLore() ? DamagerWeaponMeta.getLore() : new ArrayList<>();
-            if (DamagerWeaponLores.size() > 0)
-            {
-	            for (String lore : DamagerWeaponLores)
-	            {
-	            	Damager.chat(lore);
-	            }
-            }
             if (DamagerWeaponLores.contains("Vampire"))
             {
-            	Damager.chat(ChatColor.GOLD + "Weapon has Vampire!");
+            	Damager.sendMessage(ChatColor.GOLD + "Weapon has Vampire!");
             	Damaged.damage(4.0);
         		Damager.setHealth(Damager.getHealth() + 4.0);
-        		Damager.chat(ChatColor.GOLD + "I has stolen your health!");
+        		Damager.sendMessage(ChatColor.GOLD + "I has stolen your health!");
             }
-            Damager.chat(ChatColor.GOLD + "CE Done!");
         }
     }
 }
