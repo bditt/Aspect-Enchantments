@@ -28,9 +28,17 @@ public class CrazedMiner implements Listener{
 			}
 			else if (lores.contains(org.bukkit.ChatColor.GOLD + "CrazyMiner II"))
 			{
-				if(new Random().nextInt(100) < 25) 
+				if(new Random().nextInt(100) < 50) 
 				{
 					PotionEffect effect = new PotionEffect(PotionEffectType.FAST_DIGGING, 200, 1);
+					e.getPlayer().addPotionEffect(effect);
+				}
+			}
+			else if (lores.contains(org.bukkit.ChatColor.GOLD + "CrazyMiner III"))
+			{
+				if(new Random().nextInt(100) < 75) 
+				{
+					PotionEffect effect = new PotionEffect(PotionEffectType.FAST_DIGGING, 200, 2);
 					e.getPlayer().addPotionEffect(effect);
 				}
 			}

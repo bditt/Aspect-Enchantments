@@ -1,23 +1,35 @@
 package net.AspectNetwork.bditt;
 
-import org.bukkit.*;
-import org.bukkit.plugin.java.JavaPlugin;
+import net.AspectNetwork.bditt.API.EnchantmentRegistry;
+import net.AspectNetwork.bditt.API.plugin.CEPLPlugin;
+import net.AspectNetwork.bditt.API.enchantment.Enchantment;
+import net.AspectNetwork.bditt.Enchantments.Energized;
+import net.AspectNetwork.bditt.Enchantments.Explosive;
 
-import net.AspectNetwork.bditt.Enchantments.CrazedMiner;
-
-public class Main extends JavaPlugin {
-	  // Fired when plugin is first enabled
+public class Main extends CEPLPlugin {
+	
+	public static Enchantment ENERGIZED = new Energized();
+	public static Enchantment EXPLOSIVE = new Explosive();
+	public Main plugin;
+	
     @Override
-    public void onEnable() {
+    public void Enable() {
+    	System.out.print("Aspect Enchantments Loading!");
+    	if (!EnchantmentRegistry.register(this, ENERGIZED))
+    	{
+    		getPluginLogger().severe("Failed to load " + ENERGIZED.getName() + "!");
+    	}
+    	if (!EnchantmentRegistry.register(this, EXPLOSIVE))
+    	{
+    		getPluginLogger().severe("Failed to load " + EXPLOSIVE.getName() + "!");
+    	}
+    	
+    	PluginManager pm = Bukkit.getPluginManager();
     	System.out.print("Aspect Enchantments Loaded!");
-    	this.getCommand("aenchant").setExecutor(new CommandHandler());
-    	System.out.print("Aspect Enchantments Command Set!");
-    	getServer().getPluginManager().registerEvents(new HitHandler(), this);
-    	getServer().getPluginManager().registerEvents(new CrazedMiner(), this);
     }
-    // Fired when plugin is disabled
+    
     @Override
-    public void onDisable() {
-
-    }
+    public void Disable() {
+		EnchantmentRegistry.unregisterAll(this);
+	}
 }

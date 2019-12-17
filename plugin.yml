@@ -3,6 +3,55 @@ main: net.AspectNetwork.bditt.Main
 version: 0.0.1
 api-version: 1.14
 commands:
-   aenchant:
-      description: Enchant a custom enchantment.
-      usage: /aenchant <enchantment>
+  ceapi:
+    description: The main command for AspectEnchantments
+  ${plugin_name}:
+    description: The main command for AspectEnchantments
+
+permissions:
+  adx.custom.enchantmentapi.plugin.*:
+    description: Gives access to all AspectEnchantments commands
+    default: op
+    children:
+      adx.ceapi.*: true
+  adx.ceapi.*:
+    description: Gives access to all AspectEnchantments commands
+    default: false
+    children:
+      adx.ceapi.use: true
+      adx.ceapi.list: true
+      adx.ceapi.enchant: true
+      adx.ceapi.enchantment: true
+      adx.ceapi.unenchant: true
+      adx.ceapi.enchantment.*: true
+#-----------------------------------------------------
+  adx.ceapi.use:
+    description: Allows the use of /ceapi
+    default: false
+  adx.ceapi.list:
+    description: Allows the use of /ceapi list
+    default: false
+    children:
+      adx.ceapi.use: true
+  adx.ceapi.enchantment:
+      description: Allows the use of /ceapi enchantment
+      default: false
+      children:
+        adx.ceapi.use: true
+  adx.ceapi.enchant:
+    description: Allows the use of /ceapi enchant <ench_id> [lvl]
+    default: false
+    children:
+      adx.ceapi.use: true
+  adx.ceapi.unenchant:
+    description: Allows the use of /ceapi unenchant <ench_id>
+    default: false
+    children:
+      adx.ceapi.use: true
+  adx.ceapi.enchantment.*:
+    description: Allows the use of all Enchantments by /ceapi unenchant/enchant <ench_id>
+    default: false
+    children:
+      adx.ceapi.use: true
+      adx.ceapi.enchant: true
+      adx.ceapi.unenchant: true
